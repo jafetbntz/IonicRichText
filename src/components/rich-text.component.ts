@@ -122,7 +122,6 @@ export class RichTextComponent implements OnInit {
   @Input() formControlItem: FormControl;
   @Input() options: RichTextOptions = {};
   @Input() placeholderText: string;
-  @Input() canClose: boolean;
 
   ngOnInit() {
 

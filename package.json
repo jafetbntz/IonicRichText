@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ismafunes/ionic-rich-text.git"
+    "url": "git+https://github.com/ismafunes/ionicrichtext.git"
   },
   "keywords": ["ionic 3", "rich", "text", "ionic", "html", "editor"],
   "author": "Ismael Funes",
