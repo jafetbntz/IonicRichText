@@ -99,7 +99,7 @@ So you can do
 
 ## Authors
 
-* **Ismael Funes** - *Initial work* - [PurpleBooth](https://github.com/IsmaFunes)
+* **Ismael Funes** - *Initial work*
 
 <!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project. -->
 
