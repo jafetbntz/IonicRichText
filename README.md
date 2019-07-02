@@ -111,3 +111,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * https://github.com/judgewest2000/Ionic3RichText
 
+Let me know if you have any issue or improvement!
+
