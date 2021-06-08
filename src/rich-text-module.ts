@@ -16,13 +16,7 @@ library.add(fas);
         RichTextComponent
     ],
     exports: [
-        RichTextComponent
+        // RichTextComponent
     ]
   })
-export class RichTextModule {
-    // static forRoot(): ModuleWithProviders<RichTextModule> {
-    //     return {
-    //         ngModule: RichTextModule
-    //     };
-    // }
-}
+export class RichTextModule {}

@@ -24,7 +24,7 @@ var RichTextModule = /** @class */ (function () {
                 RichTextComponent
             ],
             exports: [
-                RichTextComponent
+            // RichTextComponent
             ]
         })
     ], RichTextModule);
