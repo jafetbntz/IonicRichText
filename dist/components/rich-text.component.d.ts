@@ -1,6 +1,6 @@
 import { ElementRef, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
-import { TextInput } from 'ionic-angular';
+import { IonInput } from '@ionic/angular';
 export interface RichTextOptions {
     undo?: boolean;
     redo?: boolean;
@@ -21,18 +21,17 @@ export interface RichTextOptions {
 }
 export declare class RichTextComponent implements OnInit {
     constructor();
-    editor: TextInput;
+    editor: IonInput;
     decorate: ElementRef;
     styler: ElementRef;
     formControlItem: FormControl;
     options: RichTextOptions;
     placeholderText: string;
-    canClose: boolean;
     ngOnInit(): void;
     uniqueId: string;
     showDecorator: boolean;
-    private updateItem();
-    private wireupButtons();
+    private updateItem;
+    private wireupButtons;
     ngAfterContentInit(): void;
     toggleDecorator(): void;
 }

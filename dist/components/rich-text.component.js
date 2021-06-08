@@ -1,9 +1,13 @@
-import { Component, ViewChild, ElementRef, Input } from '@angular/core';
-import { FormControl } from "@angular/forms";
-import { TextInput } from 'ionic-angular';
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+import { Component, ViewChild, Input } from '@angular/core';
 var HTML = "<!-- https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand -->\n<div class=\"rich-text\">\n  <div #decorate class=\"decorator\">\n    <ion-buttons start [hidden]=\"!showDecorator && options.canClose\">\n        <button ion-button [hidden]=\"!options.undo\" data-command=\"undo\"><ion-icon name=\"undo\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.redo\" data-command=\"redo\"><ion-icon name=\"redo\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.bold\" data-command=\"bold\"><fa-icon icon=\"bold\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.italic\" data-command=\"italic\"><fa-icon icon=\"italic\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.underline\" data-command=\"underline\"><fa-icon icon=\"underline\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.strikethrough\" data-command=\"strikethrough\"><fa-icon icon=\"strikethrough\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.largeText\" data-command=\"fontSize|6\"><span style=\"font-size: 1.5em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.largeText || !options.smallText\" data-command=\"removeFormat\"><span style=\"font-size: 1.0em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.smallText\" data-command=\"fontSize|1\"><span style=\"font-size: 0.6em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.alignLeft\" data-command=\"justifyLeft\"><fa-icon icon=\"align-left\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.alignCenter\" data-command=\"justifyCenter\"><fa-icon icon=\"align-center\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.alignRight\" data-command=\"justifyRight\"><fa-icon icon=\"align-right\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.justify\" data-command=\"justifyFull\"><fa-icon icon=\"align-justify\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.lineJump\" data-command=\"insertHorizontalRule\"><ion-icon name=\"return-left\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.orderedList\" data-command=\"insertOrderedList\"><fa-icon icon=\"list-ol\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.unorderedList\" data-command=\"insertUnorderedList\"><fa-icon icon=\"list-ul\"></fa-icon></button>\n  \n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)=\"toggleDecorator()\" *ngIf=\"options.canClose\" float-right color=\"primary\">\n        <ion-icon [name]=\"showDecorator ? 'close' : 'create'\"></ion-icon>\n    </button>\n    </ion-buttons>\n  \n    </div>\n  \n  \n    <div #styler text-right>\n  \n  \n    </div>\n  \n    <ion-textarea #editor contenteditable=\"true\" style=\"-webkit-user-select:text; user-select:text;\" class=\"maineditor\" tappable [placeholder]=\"placeholderText\">\n  \n    </ion-textarea>\n  \n</div>\n\n  ";
 var STYLE = ".rich-text [contenteditable=true] {\n    -webkit-user-select: auto !important;\n    padding: 2px;\n    margin: 2px;\n    border: 1px solid #CECECE;\n    overflow-x: scroll;\n    overflow-y: auto;\n    word-wrap: normal;\n    height: 20vh;\n    background-color: #fff;\n  }\n  .rich-text [contenteditable=true] img {\n    padding-left: 2px;\n    max-width: 95%;\n  }\n  .rich-text [contenteditable=true]:empty:before {\n    content: attr(data-placeholder-text);\n    display: block;\n    color: lightgrey;\n    font-weight: bold;\n  }\n  .rich-text div.decorator {\n    margin: 5px 1px 5px 1px;\n    text-align: center;\n  }\n  .rich-text div.decorator button {\n    background: #444;\n    color: #fff;\n    font-size: 1.1em;\n    height: 35px;\n    min-width: 30px;\n    padding-left: 1px;\n    padding-right: 1px;\n  }\n  \n  ";
-var RichTextComponent = (function () {
+var RichTextComponent = /** @class */ (function () {
     function RichTextComponent() {
         this.options = {};
         this.uniqueId = "editor" + Math.floor(Math.random() * 1000000);
@@ -39,47 +43,26 @@ var RichTextComponent = (function () {
     //     return value.length === 0;
     //   }
     // };
-    // private stringTools = {
-    //   isNullOrWhiteSpace: (value: string) => {
-    //     if (value == null || value == undefined) {
-    //       return true;
-    //     }
-    //     value = value.replace(/[\n\r]/g, '');
-    //     value = value.split(' ').join('');
-    //     return value.length === 0;
-    //   }
-    // };
-    RichTextComponent.prototype.updateItem = 
-    // private stringTools = {
-    //   isNullOrWhiteSpace: (value: string) => {
-    //     if (value == null || value == undefined) {
-    //       return true;
-    //     }
-    //     value = value.replace(/[\n\r]/g, '');
-    //     value = value.split(' ').join('');
-    //     return value.length === 0;
-    //   }
-    // };
-    function () {
+    RichTextComponent.prototype.updateItem = function () {
         var _this = this;
-        var element = this.editor.getNativeElement();
-        element.innerHTML = this.formControlItem.value;
+        // const element = this.editor.getNativeElement();
+        // element.innerHTML = this.formControlItem.value;
+        this.editor.value = this.formControlItem.value;
         var reactToChangeEvent = function () {
             // if (this.stringTools.isNullOrWhiteSpace(element.innerText)) {
             //   element.innerHTML = '<div></div>';
             //   this.formControlItem.setValue(null);
             // } else {
-            // if (this.stringTools.isNullOrWhiteSpace(element.innerText)) {
-            //   element.innerHTML = '<div></div>';
-            //   this.formControlItem.setValue(null);
-            // } else {
-            _this.formControlItem.setValue(element.innerHTML);
+            // this.formControlItem.setValue(element.innerHTML);
+            _this.formControlItem.setValue(_this.editor.value);
             // }
         };
-        element.onchange = reactToChangeEvent;
-        element.onkeyup = reactToChangeEvent;
-        element.onpaste = reactToChangeEvent;
-        element.oninput = reactToChangeEvent;
+        this.editor.ionChange.asObservable().subscribe(function () { return reactToChangeEvent(); });
+        this.editor.ionInput.asObservable().subscribe(function () { return reactToChangeEvent(); });
+        // element.onchange = reactToChangeEvent;
+        // element.onkeyup = reactToChangeEvent;
+        // element.onpaste = reactToChangeEvent;
+        // element.oninput = reactToChangeEvent;
     };
     RichTextComponent.prototype.wireupButtons = function () {
         var _this = this;
@@ -93,13 +76,15 @@ var RichTextComponent = (function () {
                     command = command.split('|')[0];
                     button.addEventListener('click', function () {
                         document.execCommand(command, false, parameter_1);
-                        _this.editor.getNativeElement().focus();
+                        // this.editor.getNativeElement().focus();
+                        _this.editor.setFocus();
                     });
                 }
                 else {
                     button.addEventListener('click', function () {
                         document.execCommand(command);
-                        _this.editor.getNativeElement().focus();
+                        // this.editor.getNativeElement().focus();
+                        _this.editor.setFocus();
                     });
                 }
             }
@@ -114,26 +99,34 @@ var RichTextComponent = (function () {
     };
     RichTextComponent.prototype.toggleDecorator = function () {
         this.showDecorator = !this.showDecorator;
-        this.editor.getNativeElement().focus();
+        // this.editor.getNativeElement().focus();
+        this.editor.setFocus();
     };
-    RichTextComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'rich-text',
-                    template: HTML,
-                    styles: [STYLE]
-                },] },
-    ];
-    /** @nocollapse */
-    RichTextComponent.ctorParameters = function () { return []; };
-    RichTextComponent.propDecorators = {
-        "editor": [{ type: ViewChild, args: ['editor',] },],
-        "decorate": [{ type: ViewChild, args: ['decorate',] },],
-        "styler": [{ type: ViewChild, args: ['styler',] },],
-        "formControlItem": [{ type: Input },],
-        "options": [{ type: Input },],
-        "placeholderText": [{ type: Input },],
-        "canClose": [{ type: Input },],
-    };
+    __decorate([
+        ViewChild('editor')
+    ], RichTextComponent.prototype, "editor", void 0);
+    __decorate([
+        ViewChild('decorate')
+    ], RichTextComponent.prototype, "decorate", void 0);
+    __decorate([
+        ViewChild('styler')
+    ], RichTextComponent.prototype, "styler", void 0);
+    __decorate([
+        Input()
+    ], RichTextComponent.prototype, "formControlItem", void 0);
+    __decorate([
+        Input()
+    ], RichTextComponent.prototype, "options", void 0);
+    __decorate([
+        Input()
+    ], RichTextComponent.prototype, "placeholderText", void 0);
+    RichTextComponent = __decorate([
+        Component({
+            selector: 'rich-text',
+            template: HTML,
+            styles: [STYLE]
+        })
+    ], RichTextComponent);
     return RichTextComponent;
 }());
 export { RichTextComponent };
