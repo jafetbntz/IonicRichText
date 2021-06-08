@@ -14,14 +14,7 @@ library.add(fas);
 var RichTextModule = /** @class */ (function () {
     function RichTextModule() {
     }
-    RichTextModule_1 = RichTextModule;
-    RichTextModule.forRoot = function () {
-        return {
-            ngModule: RichTextModule_1
-        };
-    };
-    var RichTextModule_1;
-    RichTextModule = RichTextModule_1 = __decorate([
+    RichTextModule = __decorate([
         NgModule({
             imports: [
                 IonicModule,

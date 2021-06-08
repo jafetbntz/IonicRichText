@@ -18,11 +18,11 @@ library.add(fas);
     exports: [
         RichTextComponent
     ]
-})
+  })
 export class RichTextModule {
-    static forRoot(): ModuleWithProviders<RichTextModule> {
-        return {
-            ngModule: RichTextModule
-        };
-    }
+    // static forRoot(): ModuleWithProviders<RichTextModule> {
+    //     return {
+    //         ngModule: RichTextModule
+    //     };
+    // }
 }
