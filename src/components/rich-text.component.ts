@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
 import { FormControl } from "@angular/forms";
-import { TextInput } from 'ionic-angular';
+import { IonInput } from '@ionic/angular';
 
 const HTML = `<!-- https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand -->
 <div class="rich-text">
@@ -115,7 +115,7 @@ export class RichTextComponent implements OnInit {
 
   }
 
-  @ViewChild('editor') editor: TextInput;
+  @ViewChild('editor') editor: IonInput;
   @ViewChild('decorate') decorate: ElementRef;
   @ViewChild('styler') styler: ElementRef;
 
@@ -163,8 +163,9 @@ export class RichTextComponent implements OnInit {
   // };
 
   private updateItem() {
-    const element = this.editor.getNativeElement();
-    element.innerHTML = this.formControlItem.value;
+    // const element = this.editor.getNativeElement();
+    // element.innerHTML = this.formControlItem.value;
+    this.editor.value = this.formControlItem.value;
 
 
     const reactToChangeEvent = () => {
@@ -173,14 +174,18 @@ export class RichTextComponent implements OnInit {
       //   element.innerHTML = '<div></div>';
       //   this.formControlItem.setValue(null);
       // } else {
-        this.formControlItem.setValue(element.innerHTML);
+        // this.formControlItem.setValue(element.innerHTML);
+        this.formControlItem.setValue(this.editor.value);
+        
       // }
     };
+    this.editor.ionChange.asObservable().subscribe(() => reactToChangeEvent());
+    this.editor.ionInput.asObservable().subscribe(() => reactToChangeEvent());
 
-    element.onchange = reactToChangeEvent;
-    element.onkeyup = reactToChangeEvent;
-    element.onpaste = reactToChangeEvent;
-    element.oninput = reactToChangeEvent;
+    // element.onchange = reactToChangeEvent;
+    // element.onkeyup = reactToChangeEvent;
+    // element.onpaste = reactToChangeEvent;
+    // element.oninput = reactToChangeEvent;
   }
 
   private wireupButtons() {
@@ -196,12 +201,14 @@ export class RichTextComponent implements OnInit {
 
           button.addEventListener('click', () => {
             document.execCommand(command, false, parameter);
-            this.editor.getNativeElement().focus();
+            // this.editor.getNativeElement().focus();
+            this.editor.setFocus();
           });
         } else {
           button.addEventListener('click', () => {
             document.execCommand(command);
-            this.editor.getNativeElement().focus();
+            // this.editor.getNativeElement().focus();
+            this.editor.setFocus();
           });
         }
       }
@@ -218,7 +225,8 @@ export class RichTextComponent implements OnInit {
 
   toggleDecorator(){
     this.showDecorator = !this.showDecorator;
-    this.editor.getNativeElement().focus();
+    // this.editor.getNativeElement().focus();
+    this.editor.setFocus();
   }
 
 }
