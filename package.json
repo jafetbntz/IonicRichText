@@ -42,8 +42,9 @@
   },
   "dependencies": {
     "@angular/router": "^12.0.3",
-    "@fortawesome/angular-fontawesome": "^0.1.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.19",
-    "@fortawesome/free-solid-svg-icons": "^5.9.0"
+    "@fortawesome/angular-fontawesome": "^0.9.0",
+    "@fortawesome/fontawesome-common-types": "^0.2.35",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3"
   }
 }
