@@ -4,12 +4,14 @@ import { RichTextComponent } from './components/rich-text/rich-text.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
 
 library.add(fas);
 
 @NgModule({
     imports: [
         IonicModule,
+        CommonModule,
         FontAwesomeModule
     ],
     declarations: [
@@ -19,10 +21,4 @@ library.add(fas);
         RichTextComponent
     ]
   })
-export class RichTextModule {
-    // static forRoot(): ModuleWithProviders<RichTextModule> {
-    //     return {
-    //         ngModule: RichTextModule
-    //     };
-    // }
-}
+export class RichTextModule {}

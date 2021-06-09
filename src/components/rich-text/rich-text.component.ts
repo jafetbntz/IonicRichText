@@ -104,6 +104,7 @@ const STYLES = `
   color: black;
 }
 
+
 .rich-text [contenteditable=true] {
     -webkit-user-select: auto !important;
     user-select: auto !important;
