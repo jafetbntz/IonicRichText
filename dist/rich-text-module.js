@@ -10,6 +10,7 @@ import { RichTextComponent } from './components/rich-text/rich-text.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
 library.add(fas);
 var RichTextModule = /** @class */ (function () {
     function RichTextModule() {
@@ -18,6 +19,7 @@ var RichTextModule = /** @class */ (function () {
         NgModule({
             imports: [
                 IonicModule,
+                CommonModule,
                 FontAwesomeModule
             ],
             declarations: [
