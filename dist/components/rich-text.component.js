@@ -4,11 +4,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { Component, ViewChild, Input } from '@angular/core';
-var HTML = "<!-- https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand -->\n<div class=\"rich-text\">\n  <div #decorate class=\"decorator\">\n    <ion-buttons start [hidden]=\"!showDecorator && options.canClose\">\n        <button ion-button [hidden]=\"!options.undo\" data-command=\"undo\"><ion-icon name=\"undo\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.redo\" data-command=\"redo\"><ion-icon name=\"redo\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.bold\" data-command=\"bold\"><fa-icon icon=\"bold\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.italic\" data-command=\"italic\"><fa-icon icon=\"italic\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.underline\" data-command=\"underline\"><fa-icon icon=\"underline\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.strikethrough\" data-command=\"strikethrough\"><fa-icon icon=\"strikethrough\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.largeText\" data-command=\"fontSize|6\"><span style=\"font-size: 1.5em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.largeText || !options.smallText\" data-command=\"removeFormat\"><span style=\"font-size: 1.0em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.smallText\" data-command=\"fontSize|1\"><span style=\"font-size: 0.6em;\">A</span></button>\n        <button ion-button [hidden]=\"!options.alignLeft\" data-command=\"justifyLeft\"><fa-icon icon=\"align-left\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.alignCenter\" data-command=\"justifyCenter\"><fa-icon icon=\"align-center\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.alignRight\" data-command=\"justifyRight\"><fa-icon icon=\"align-right\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.justify\" data-command=\"justifyFull\"><fa-icon icon=\"align-justify\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.lineJump\" data-command=\"insertHorizontalRule\"><ion-icon name=\"return-left\"></ion-icon></button>\n        <button ion-button [hidden]=\"!options.orderedList\" data-command=\"insertOrderedList\"><fa-icon icon=\"list-ol\"></fa-icon></button>\n        <button ion-button [hidden]=\"!options.unorderedList\" data-command=\"insertUnorderedList\"><fa-icon icon=\"list-ul\"></fa-icon></button>\n  \n    </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)=\"toggleDecorator()\" *ngIf=\"options.canClose\" float-right color=\"primary\">\n        <ion-icon [name]=\"showDecorator ? 'close' : 'create'\"></ion-icon>\n    </button>\n    </ion-buttons>\n  \n    </div>\n  \n  \n    <div #styler text-right>\n  \n  \n    </div>\n  \n    <ion-textarea #editor contenteditable=\"true\" style=\"-webkit-user-select:text; user-select:text;\" class=\"maineditor\" tappable [placeholder]=\"placeholderText\">\n  \n    </ion-textarea>\n  \n</div>\n\n  ";
-var STYLE = ".rich-text [contenteditable=true] {\n    -webkit-user-select: auto !important;\n    padding: 2px;\n    margin: 2px;\n    border: 1px solid #CECECE;\n    overflow-x: scroll;\n    overflow-y: auto;\n    word-wrap: normal;\n    height: 20vh;\n    background-color: #fff;\n  }\n  .rich-text [contenteditable=true] img {\n    padding-left: 2px;\n    max-width: 95%;\n  }\n  .rich-text [contenteditable=true]:empty:before {\n    content: attr(data-placeholder-text);\n    display: block;\n    color: lightgrey;\n    font-weight: bold;\n  }\n  .rich-text div.decorator {\n    margin: 5px 1px 5px 1px;\n    text-align: center;\n  }\n  .rich-text div.decorator button {\n    background: #444;\n    color: #fff;\n    font-size: 1.1em;\n    height: 35px;\n    min-width: 30px;\n    padding-left: 1px;\n    padding-right: 1px;\n  }\n  \n  ";
+import { Component, ViewChild, Input } from "@angular/core";
+import { faBold, faItalic, faUnderline, faStrikethrough, faAlignLeft, faAlignCenter, faAlignRight, faAlignJustify, faListOl, faListUl, } from "@fortawesome/free-solid-svg-icons";
 var RichTextComponent = /** @class */ (function () {
     function RichTextComponent() {
+        this.faBold = faBold;
+        this.faItalic = faItalic;
+        this.faUnderline = faUnderline;
+        this.faStrikethrough = faStrikethrough;
+        this.faAlignLeft = faAlignLeft;
+        this.faAlignCenter = faAlignCenter;
+        this.faAlignRight = faAlignRight;
+        this.faAlignJustify = faAlignJustify;
+        this.faListOl = faListOl;
+        this.faListUl = faListUl;
         this.options = {};
         this.uniqueId = "editor" + Math.floor(Math.random() * 1000000);
         this.showDecorator = false;
@@ -28,9 +37,13 @@ var RichTextComponent = /** @class */ (function () {
             justify: this.options.justify != undefined ? this.options.justify : true,
             lineJump: this.options.lineJump != undefined ? this.options.lineJump : true,
             orderedList: this.options.orderedList != undefined ? this.options.orderedList : true,
-            unorderedList: this.options.unorderedList != undefined ? this.options.unorderedList : true,
-            strikethrough: this.options.strikethrough != undefined ? this.options.strikethrough : true,
-            canClose: this.options.canClose
+            unorderedList: this.options.unorderedList != undefined
+                ? this.options.unorderedList
+                : true,
+            strikethrough: this.options.strikethrough != undefined
+                ? this.options.strikethrough
+                : true,
+            canClose: this.options.canClose,
         };
     };
     // private stringTools = {
@@ -66,22 +79,22 @@ var RichTextComponent = /** @class */ (function () {
     };
     RichTextComponent.prototype.wireupButtons = function () {
         var _this = this;
-        var buttons = this.decorate.nativeElement.getElementsByTagName('button');
+        var buttons = this.decorate.nativeElement.getElementsByTagName("button");
         var _loop_1 = function (i) {
             var button = buttons[i];
-            var command = button.getAttribute('data-command');
+            var command = button.getAttribute("data-command");
             if (command) {
-                if (command.includes('|')) {
-                    var parameter_1 = command.split('|')[1];
-                    command = command.split('|')[0];
-                    button.addEventListener('click', function () {
+                if (command.includes("|")) {
+                    var parameter_1 = command.split("|")[1];
+                    command = command.split("|")[0];
+                    button.addEventListener("click", function () {
                         document.execCommand(command, false, parameter_1);
                         // this.editor.getNativeElement().focus();
                         _this.editor.setFocus();
                     });
                 }
                 else {
-                    button.addEventListener('click', function () {
+                    button.addEventListener("click", function () {
                         document.execCommand(command);
                         // this.editor.getNativeElement().focus();
                         _this.editor.setFocus();
@@ -103,13 +116,13 @@ var RichTextComponent = /** @class */ (function () {
         this.editor.setFocus();
     };
     __decorate([
-        ViewChild('editor')
+        ViewChild("editor")
     ], RichTextComponent.prototype, "editor", void 0);
     __decorate([
-        ViewChild('decorate')
+        ViewChild("decorate")
     ], RichTextComponent.prototype, "decorate", void 0);
     __decorate([
-        ViewChild('styler')
+        ViewChild("styler")
     ], RichTextComponent.prototype, "styler", void 0);
     __decorate([
         Input()
@@ -122,9 +135,9 @@ var RichTextComponent = /** @class */ (function () {
     ], RichTextComponent.prototype, "placeholderText", void 0);
     RichTextComponent = __decorate([
         Component({
-            selector: 'rich-text',
-            template: HTML,
-            styles: [STYLE]
+            selector: "rich-text",
+            templateUrl: "rich-text.component.html",
+            styleUrls: ["rich-text.component.scss"],
         })
     ], RichTextComponent);
     return RichTextComponent;

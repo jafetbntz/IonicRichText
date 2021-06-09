@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { RichTextComponent } from './components/rich-text.component';
+import { RichTextComponent } from './components/rich-text/rich-text.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,7 @@ var RichTextModule = /** @class */ (function () {
                 RichTextComponent
             ],
             exports: [
-            // RichTextComponent
+                RichTextComponent
             ]
         })
     ], RichTextModule);

@@ -1,6 +1,4 @@
-import { ElementRef, OnInit } from "@angular/core";
-import { FormControl } from "@angular/forms";
-import { IonInput } from "@ionic/angular";
+import { ElementRef, OnInit, EventEmitter } from "@angular/core";
 import { RichTextOptions } from "./rich-text-options.interface";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export declare class RichTextComponent implements OnInit {
@@ -15,17 +13,18 @@ export declare class RichTextComponent implements OnInit {
     faListOl: IconDefinition;
     faListUl: IconDefinition;
     constructor();
-    editor: IonInput;
+    editor: ElementRef;
     decorate: ElementRef;
     styler: ElementRef;
-    formControlItem: FormControl;
+    text: string;
+    textChange: EventEmitter<string>;
     options: RichTextOptions;
     placeholderText: string;
-    ngOnInit(): void;
     uniqueId: string;
     showDecorator: boolean;
-    private updateItem;
-    private wireupButtons;
+    ngOnInit(): void;
     ngAfterContentInit(): void;
+    private updateItem;
+    excute(command: string): void;
     toggleDecorator(): void;
 }

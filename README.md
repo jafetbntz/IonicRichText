@@ -14,17 +14,17 @@ npm i ionic-rich-text
 Import it into your app.module
 
 ```typescript
-import { RichTextModule } from 'ionic-rich-text/dist/rich-text-module';
+import { RichTextModule } from 'ionic-rich-text';
 
-.
-.
-.
+...
 
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     RichTextModule
   ],
+
+...
 
 ```
 
@@ -36,14 +36,14 @@ If you are using lazy loading, you might have to import the module into the page
 
 You can just use the editor with the tag <rich-text>
 ```HTML
-<rich-text [formControlItem]="item"></rich-text>
+<rich-text [text]="item"></rich-text>
 ```
 
 and in your .ts file:
 
 ```typescript
-constructor(public navCtrl: NavController, public navParams: NavParams, private fb: FormBuilder) {
-    this.item = this.fb.control('');
+constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.item = '';
   }
 ```
 
